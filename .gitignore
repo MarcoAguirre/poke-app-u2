@@ -42,3 +42,15 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+.fvm/
+
+# Ignorar archivos generados por Flutter
+**/generated_*
+**/generated_*/**
+**/GeneratedPluginRegistrant.*
+
+# Ignorar carpetas de caché
+**/ios/Pods/
+**/android/build/
+**/android/.gradle/
