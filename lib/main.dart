@@ -1,9 +1,27 @@
 import 'package:flutter/material.dart';
-// import 'package:pokemon_app/presentation/screens/counter/counter_screen.dart';
-import 'package:pokemon_app/views/counter_view.dart';
+import 'package:pokemon_app/provider/pokemon_provider.dart';
+import 'package:pokemon_app/views/views.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const AppState());
+}
+
+class AppState extends StatelessWidget {
+  const AppState({super.key});
+
+  @override
+    Widget build(BuildContext context) {
+      return MultiProvider(
+        providers: [
+          ChangeNotifierProvider(
+            create: (_) => PokemonProvider(),
+            lazy: false,
+          ),
+        ],
+        child: const MyApp(),
+      );
+    }
 }
 
 class MyApp extends StatelessWidget {
@@ -17,7 +35,12 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         colorSchemeSeed: Colors.deepPurple,
       ),
-      home: const CounterView(),
+      initialRoute: "/splashScreen",
+      routes: {
+        "/splashScreen": (context) => const SplashScreen(),
+        "/home": (context) => const PokemonListView(),
+        "/details": (context) => const PokemonDetails(),
+      },
     );
   }
 }
