@@ -4,7 +4,6 @@ import 'package:pokemon_app/services/pokemon_services.dart';
 
 class PokemonProvider extends ChangeNotifier {
   PokemonProvider() {
-    print('PokemonProvider initialized');
     getInitialPokemons();
   }
 
