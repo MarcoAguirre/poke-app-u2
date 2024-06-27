@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:pokemon_app/provider/pokemon_provider.dart';
+import 'package:pokemon_app/utils/permission_utils.dart';
+import 'package:pokemon_app/widgets/my_pokemons_button.dart';
 import 'package:pokemon_app/widgets/pokemon_card.dart';
 import 'package:provider/provider.dart';
-import 'package:pokemon_app/utils/permission_utils.dart';
 
 class PokemonListView extends StatefulWidget {
   const PokemonListView({super.key});
@@ -31,13 +32,26 @@ class _PokemonListViewState extends State<PokemonListView> {
           ? const Center(
               child: CircularProgressIndicator(),
             )
-          : ListView.builder(
-              itemCount: pokemonProvider.pokemons.length,
-              itemBuilder: (context, index) {
-                return PokemonCard(
-                  pokemon: pokemonProvider.pokemons[index],
-                );
-              },
+          : SingleChildScrollView(
+              child: Column(
+                children: [
+                  ListView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: pokemonProvider.pokemons.length,
+                    itemBuilder: (context, index) {
+                      return PokemonCard(
+                        pokemon: pokemonProvider.pokemons[index],
+                      );
+                    },
+                  ),
+                  const SizedBox(height: 30),
+                  MyPokemonsButton(
+                    onTap: () => Navigator.pushNamed(context, "/my-pokemons")
+                  ),
+                  const SizedBox(height: 50),
+                ],
+              ),
             ),
       floatingActionButton: CustomFloatingActionButton(
           icon: Icons.add,
