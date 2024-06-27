@@ -42,13 +42,14 @@ class _PokemonListViewState extends State<PokemonListView> {
                     itemBuilder: (context, index) {
                       return PokemonCard(
                         pokemon: pokemonProvider.pokemons[index],
+                        captures: [],
                       );
                     },
                   ),
                   const SizedBox(height: 30),
                   MyPokemonsButton(
-                    onTap: () => Navigator.pushNamed(context, "/my-pokemons")
-                  ),
+                      onTap: () =>
+                          Navigator.pushNamed(context, "/my-pokemons")),
                   const SizedBox(height: 50),
                 ],
               ),
