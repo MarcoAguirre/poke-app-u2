@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pokemon_app/provider/pokemon_provider.dart';
 import 'package:pokemon_app/widgets/pokemon_card.dart';
 import 'package:provider/provider.dart';
+import 'package:pokemon_app/utils/permission_utils.dart';
 
 class PokemonListView extends StatefulWidget {
   const PokemonListView({super.key});
@@ -11,6 +12,12 @@ class PokemonListView extends StatefulWidget {
 }
 
 class _PokemonListViewState extends State<PokemonListView> {
+  @override
+  void initState() {
+    super.initState();
+    askPermissions().then((value) => null);
+  }
+
   @override
   Widget build(BuildContext context) {
     final pokemonProvider = Provider.of<PokemonProvider>(context);
