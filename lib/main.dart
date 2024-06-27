@@ -11,17 +11,17 @@ class AppState extends StatelessWidget {
   const AppState({super.key});
 
   @override
-    Widget build(BuildContext context) {
-      return MultiProvider(
-        providers: [
-          ChangeNotifierProvider(
-            create: (_) => PokemonProvider(),
-            lazy: false,
-          ),
-        ],
-        child: const MyApp(),
-      );
-    }
+  Widget build(BuildContext context) {
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => PokemonProvider(),
+          lazy: false,
+        ),
+      ],
+      child: const MyApp(),
+    );
+  }
 }
 
 class MyApp extends StatelessWidget {
