@@ -17,7 +17,7 @@ class _CounterViewState extends State<CounterView> {
 
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Counter View'),
+          title: const Text('Poke app'),
           actions: [
             IconButton(
               icon: const Icon(Icons.refresh_rounded),
